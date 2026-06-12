@@ -1,0 +1,17 @@
+{
+  "name": "apicrawl-skills",
+  "owner": {
+    "name": "Juraj Bezdek",
+    "email": "juraj.bezdek@gmail.com"
+  },
+  "metadata": {
+    "description": "Agent skills for searching and exploring the api-crawl documentation catalog."
+  },
+  "plugins": [
+    {
+      "name": "api-crawl",
+      "source": "./skills/api-crawl",
+      "description": "Search or explore API documentation indexed in the api-crawl catalog via REST."
+    }
+  ]
+}
