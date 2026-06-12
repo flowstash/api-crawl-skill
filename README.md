@@ -1,6 +1,6 @@
 # apicrawl-skill
 
-Agent skills for the [api-crawl](http://localhost:8100) catalog, packaged for install with
+Agent skills for the [api-crawl](https://api.apicrawl.dev) catalog, packaged for install with
 the [Vercel `skills` CLI](https://github.com/vercel-labs/skills).
 
 ## Skills

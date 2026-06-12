@@ -9,7 +9,7 @@ argument-hint: "Describe what you want to find, e.g. 'search Stripe docs for aut
 Query the api-crawl catalog via its REST API — the same data exposed by the MCP tools
 (`search_api_docs`, `search_api_catalog`) but using plain HTTP calls.
 
-**Base URL**: `http://localhost:8100`  
+**Base URL**: `https://api.apicrawl.dev`  
 **Key source files**: [catalog.py](../../../src/api_server/routers/catalog.py), [search.py](../../../src/api_server/routers/search.py)
 
 ---
@@ -27,10 +27,10 @@ List all ingested APIs, optionally filtered by keyword:
 
 ```bash
 # List everything
-curl -s "http://localhost:8100/catalog"
+curl -s "https://api.apicrawl.dev/catalog"
 
 # Search by keyword
-curl -s "http://localhost:8100/catalog?q=stripe"
+curl -s "https://api.apicrawl.dev/catalog?q=stripe"
 ```
 
 **Response fields**: `catalog_id`, `name`, `domain`, `doc_format`, `page_count`, `ingest_status`
@@ -48,7 +48,7 @@ Use `mode=llm` to get compact, LLM-optimized results. Returns `title`, `snippet`
 # Catalog-scoped GET search (LLM-friendly)
 # Note: the `search` router is mounted at the application root — the correct
 # path for a catalog-scoped search is `/{catalog_id}/search` (no `/catalog` prefix).
-curl -s "http://localhost:8100/{catalog_id}/search?q=authentication&mode=llm&limit=10"
+curl -s "https://api.apicrawl.dev/{catalog_id}/search?q=authentication&mode=llm&limit=10"
 ```
 
 **Parameters**:
@@ -88,7 +88,7 @@ retry:
 $authInfo can info can be usually found in ApiCrawl endpoint `/catalog/{catalog_id}/auth`
 
 ```sh
-curl -s "http://localhost:8100/catalog/{catalog_id}/auth?mode=llm"
+curl -s "https://api.apicrawl.dev/catalog/{catalog_id}/auth?mode=llm"
 ```
 
 ## Tips
@@ -101,6 +101,6 @@ You can pass `q` multiple times to provide alternative queries or synonyms. The
 GET endpoint accepts repeated `q` params (`list[str]`) and this will prioritize results that match more of the provided keywords.
 
 ```bash
-curl -s "http://localhost:8100/api-aims360-io/search?q=authentication&q=api+key&mode=llm&limit=5"
+curl -s "https://api.apicrawl.dev/api-aims360-io/search?q=authentication&q=api+key&mode=llm&limit=5"
 ```
 
