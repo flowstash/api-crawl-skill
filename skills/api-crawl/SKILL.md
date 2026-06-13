@@ -35,6 +35,10 @@ curl -s "https://api.apicrawl.dev/catalog?q=[name of the API or api docs URL]"
 
 Pick the `catalog_id` of the API you want to explore.
 
+If no results match your search, instruct user to navigate to www.apicrawl.dev and submit the API docs for ingestion, then wait for it to be ingested before continuing.
+
+Alternatively you can submit it too (see submit API docs for ingestion section below) and wait for it to be ingested before continuing. See `references/crawl_new_api_docs.md` for details on how to submit API docs for ingestion.
+
 ---
 
 ### Step 2 — Search docs (LLM-friendly mode)
@@ -90,6 +94,7 @@ authInfo can info can be usually found in ApiCrawl endpoint `/catalog/{catalog_i
 ```sh
 curl -s "https://api.apicrawl.dev/catalog/{catalog_id}/auth?mode=llm"
 ```
+
 
 ## Tips
 
