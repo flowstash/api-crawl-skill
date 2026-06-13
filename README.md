@@ -1,4 +1,4 @@
-# apicrawl-skill
+# api-crawl-skill
 
 Agent skills for the [api-crawl](https://api.apicrawl.dev) catalog, packaged for install with
 the [Vercel `skills` CLI](https://github.com/vercel-labs/skills).
@@ -15,22 +15,22 @@ Install all skills into the current project:
 
 ```bash
 # From GitHub (after pushing this repo)
-npx skills add <your-user>/apicrawl-skill
+npx skills add flowstash/api-crawl-skill
 
 # From a local checkout
-npx skills add ./apicrawl-skill
+npx skills add ./api-crawl-skill
 ```
 
 Install a single skill into a specific agent:
 
 ```bash
-npx skills add <your-user>/apicrawl-skill -s api-crawl -a claude-code
+npx skills add flowstash/api-crawl-skill -s api-crawl -a claude-code
 ```
 
 Install globally (into `~/<agent>/skills/`):
 
 ```bash
-npx skills add <your-user>/apicrawl-skill -g
+npx skills add flowstash/api-crawl-skill -g
 ```
 
 Other useful commands:
