@@ -18,19 +18,17 @@ Query the api-crawl catalog via its REST API — the same data exposed by the MC
 
 Follow these steps in order. Skip steps where the information is already known.
 
-### Step 1 — Find the `catalog_id` / api id, if you dont have it
+### Step 1 — Figure out the `catalog_id` / apiId, if you dont have it
 
-If you already know the catalog_id, skip to Step 2.
+Check the prompt... if it starts/contains with catalog_id: or apiId: snake_case_human_readable_name, then this is most likely the catalog_id and you can skip to Step 2.
+
 If you don't have the API Id, we need to search it first.
 
 List all ingested APIs, optionally filtered by keyword:
 
 ```bash
-# List everything
-curl -s "https://api.apicrawl.dev/catalog"
-
 # Search by keyword
-curl -s "https://api.apicrawl.dev/catalog?q=stripe"
+curl -s "https://api.apicrawl.dev/catalog?q=[name of the API or api docs URL]"
 ```
 
 **Response fields**: `catalog_id`, `name`, `domain`, `doc_format`, `page_count`, `ingest_status`
@@ -74,10 +72,12 @@ limit: max number of results (1–20)
 > Both may be null if the result maps to neither.
 
 
-## Setting up client
+## Setting up flowstash client
+If user is using flowstash and asks for creating flowstash config client
 If client config is not yet set up (usually a file in `config/shared/clients/` folder) you should ask whether to create it. The common pattern is to create config named `<clientId>.yaml` and declare the config:
+
 ```yaml
-# apiCrawl api id: `[catalog_id]`
+# apiCrawl catalog id: `[catalog_id]`
 baseUrl: ?
 auth: 
   [authInfo]
@@ -85,7 +85,7 @@ retry:
   max_retries: ?
 ```
 
-$authInfo can info can be usually found in ApiCrawl endpoint `/catalog/{catalog_id}/auth`
+authInfo can info can be usually found in ApiCrawl endpoint `/catalog/{catalog_id}/auth`
 
 ```sh
 curl -s "https://api.apicrawl.dev/catalog/{catalog_id}/auth?mode=llm"
